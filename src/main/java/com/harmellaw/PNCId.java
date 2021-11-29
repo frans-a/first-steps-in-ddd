@@ -1,10 +1,5 @@
 package com.harmellaw;
 
-public class PNCId {
+public record PNCId(String value) {
 
-    public final String value;
-
-    public PNCId(String value) {
-        this.value = value;
-    }
 }

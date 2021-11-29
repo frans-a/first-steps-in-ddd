@@ -1,21 +1,34 @@
 package com.harmellaw;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import java.util.Collections;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class APreChargeDecision {
+import static org.assertj.core.api.Assertions.assertThat;
+
+class APreChargeDecision {
+    private PreChargeDecision preChargeDecision;
+    private OffenceAdvice offenceAdvice;
+    private Suspect suspect;
+    private Set<Suspect> suspects;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
+        PNCId pncId = new PNCId("ANOTHER_PNC_ID");
+        suspect = new Suspect(CriminalOffence.CUTTING_AWAY_BUOYS_ETC);
+        suspects = Set.of(suspect);
+        preChargeDecision = new PreChargeDecision(pncId, suspects, Collections.emptyMap());
+        offenceAdvice = new OffenceAdvice();
     }
 
-    @Disabled("So the CI build stays green.  Remove this to get coding.")
     @Test
-    public void shouldRecordAlternativeOffenceAdviceAgainstSuspects() {
-        fail();
+    void shouldRecordAlternativeOffenceAdviceAgainstSuspects() {
+        preChargeDecision.recordAlternativeOffenceAdvice(suspect, offenceAdvice);
+
+        assertThat(offenceAdvice).isEqualTo(preChargeDecision.getOffenceAdviceFor(suspect));
     }
+
 
 }
