@@ -1,8 +1,10 @@
-package com.harmellaw;
+package com.harmellaw.investigation;
 
 import java.util.Collections;
 import java.util.Set;
 
+import com.harmellaw.CriminalOffence;
+import com.harmellaw.PNCId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

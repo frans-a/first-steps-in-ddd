@@ -1,8 +1,11 @@
-package com.harmellaw;
+package com.harmellaw.investigation;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import com.harmellaw.CriminalOffence;
+import com.harmellaw.PNCId;
 
 public class PreChargeDecision {
     private final PNCId pncId;

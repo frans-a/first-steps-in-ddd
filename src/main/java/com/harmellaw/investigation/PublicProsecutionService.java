@@ -1,4 +1,4 @@
-package com.harmellaw;
+package com.harmellaw.investigation;
 
 public class PublicProsecutionService {
     public PreChargeDecisionCase receiveRequestForPreChargeDecision(PreChargeDecisionRequest preChargeDecisionRequest) {

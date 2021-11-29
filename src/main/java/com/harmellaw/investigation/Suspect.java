@@ -1,4 +1,6 @@
-package com.harmellaw;
+package com.harmellaw.investigation;
+
+import com.harmellaw.CriminalOffence;
 
 public class Suspect {
 
