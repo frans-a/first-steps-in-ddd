@@ -22,7 +22,7 @@ class APoliceInvestigation {
 
     @Test
     void mustHaveAPoliceNationalComputerId() {
-        assertNotNull(anInvestigation.pncId);
+        assertThat(anInvestigation.pncId).isNotNull();
     }
 
     @Test
