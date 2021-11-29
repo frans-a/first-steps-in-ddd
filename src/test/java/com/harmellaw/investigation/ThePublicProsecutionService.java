@@ -2,6 +2,9 @@ package com.harmellaw.investigation;
 
 import com.harmellaw.CriminalOffence;
 import com.harmellaw.PNCId;
+import com.harmellaw.PublicProsecutionService;
+import com.harmellaw.prosecution.CriminalCase;
+import com.harmellaw.prosecution.PoliceCaseFile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,11 +27,17 @@ class ThePublicProsecutionService {
     }
 
     @Test
-    void shouldCreateACaseWhenReceivingAPcdRequest() {
-        PreChargeDecisionCase preChargeDecisionCase =
+    void shouldCreateAPreChargeDecisionCaseWhenReceivingAPcdRequest() {
+         PreChargeDecisionCase preChargeDecisionCase =
                 thePublicProsecutionService.receiveRequestForPreChargeDecision(preChargeDecisionRequest);
 
         assertThat(preChargeDecisionCase.pncId()).isEqualTo(pncId);
         assertThat(preChargeDecisionCase.suspects()).isEqualTo(policeInvestigation.suspects);
+    }
+
+    @Test
+    void shouldCreateACriminalCaseWhenAPoliceCaseFileIsAccepted() {
+        final CriminalCase criminalCase = thePublicProsecutionService.acceptPoliceCaseFile(new PoliceCaseFile());
+        assertThat(criminalCase).isNotNull();
     }
 }

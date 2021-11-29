@@ -1,6 +1,5 @@
 package com.harmellaw.investigation;
 
-import java.util.Collections;
 import java.util.Set;
 
 import com.harmellaw.CriminalOffence;
@@ -10,8 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class APreChargeDecision {
-    private PreChargeDecision preChargeDecision;
+class APreChargeDecisionCase {
+    private PreChargeDecisionCase preChargeDecisionCase;
     private OffenceAdvice offenceAdvice;
     private Suspect suspect;
     private Set<Suspect> suspects;
@@ -21,15 +20,15 @@ class APreChargeDecision {
         PNCId pncId = new PNCId("ANOTHER_PNC_ID");
         suspect = new Suspect(CriminalOffence.CUTTING_AWAY_BUOYS_ETC);
         suspects = Set.of(suspect);
-        preChargeDecision = new PreChargeDecision(pncId, suspects, Collections.emptyMap());
+        preChargeDecisionCase = new PreChargeDecisionCase(pncId, suspects);
         offenceAdvice = new OffenceAdvice();
     }
 
     @Test
     void shouldRecordAlternativeOffenceAdviceAgainstSuspects() {
-        preChargeDecision.recordAlternativeOffenceAdvice(suspect, offenceAdvice);
+        preChargeDecisionCase.recordAlternativeOffenceAdvice(suspect, offenceAdvice);
 
-        assertThat(offenceAdvice).isEqualTo(preChargeDecision.getOffenceAdviceFor(suspect));
+        assertThat(offenceAdvice).isEqualTo(preChargeDecisionCase.getOffenceAdviceFor(suspect));
     }
 
 
